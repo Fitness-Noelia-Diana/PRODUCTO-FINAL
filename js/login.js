@@ -12,76 +12,33 @@ $(document).ready(function() {
 
   firebase.initializeApp(config);
 
-  /*$('.register').on('click', function(event) {
-    var email = $('#email1').val();
-    var password = $('#password1').val();
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // ...
-    });
-  });
+  function loginGoogle() {
+  	if (!firebase.auth().currentUser) {
+  	 var provider = new firebase.auth.GoogleAuthProvider();
+  	 provider.addScope('https://www.googleapis.com/auth/plus.login');
+  	 firebase.auth().signInWithPopup(provider).then(function(result) {
+			  var token = result.credential.accessToken;
+			  var user = result.user;
+			  var name = result.user.displayName;
+        window.location.href = '../index.html';
+      }).catch(function(error) {
+			  var errorCode = error.code;
+			  var errorMessage = error.message;
+			  var email = error.email;
+			  var credential = error.credential;
 
-  $('.login').on('click', function(event) {
-    var email2 = $('#email').val();
-    var password2 = $('#password').val();
-    firebase.auth().signInWithEmailAndPassword(email2, password2).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);// ...
-    });
-    //
-  });*/
+			  if (errorCode === 'auth/account-exists-with-different-credential') {
+			  	alert('Es el mismo usuario');
+			  }
+      });
+  	} else {
+  		firebase.auth().signOut();
+  	}
+  };
 
-  $('#inigoogle').on('click', function() {
-    var provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider).then(function(result) {
-      window.location.href = 'home.html';
-      // var token = result.credential.accessToken;
-      // The signed-in user info.
-      // var user = result.user;
-    });
-  });
-  // var $email = $('#email1');
-  // var $password = $('#password1');
+  function signOut() {
+    window.location.href = 'login.html';
+  };
 
-  /*$('.register').on('click', function(event) {
-    event.preventDefault();
-    localStorage.email = $email.val();
-    localStorage.password = $password.val();
-    // window.location.href = 'login.html';
-  });
-
-  var $email1 = $('#email');
-  var $password1 = $('#password');
-  // variable booleanas para la activación del boton
-  var validateEmail = false;
-  var validatePassword = false;
-  // llamamos a los valores guardados en el localStorage
-  console.log(localStorage.email);
-  console.log(localStorage.password);
-
-  $email1.on('input', function() {
-    if ($(this).val() === localStorage.email) {
-      // alert('pasa');
-      validateEmail = true;
-    }
-  });
-
-  $password1.on('input', function() {
-    if ($(this).val() === localStorage.password) {
-      // alert('esto tambien pasa');
-      validatePassword = true;
-    }
-  });
-
-  $('.login').on('click', function(event) {
-    event.preventDefault();
-    if (validateEmail && validatePassword) {
-      window.location.href = 'home.html';
-    }
-  });*/
+  $('#iniGoogle').on('click', loginGoogle);
 });

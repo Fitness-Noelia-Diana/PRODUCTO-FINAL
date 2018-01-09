@@ -4,7 +4,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- Enlace Icono de Pestaña-->
   <link rel="icon" href="../assets/images/bebe.ico">
-  <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
   <!-- Enlace a Bootstrap compilado y minificado-->
   <link rel="stylesheet" href="../vendors/materialize/css/materialize.min.css">
   <!-- Enlace a hoja de estilo externa -->
@@ -16,7 +15,7 @@
     <div class="trans">
       <div class="container">
         <figure class="logo">
-          <img src="../assets/images/bebe.png" class="responsive-img" alt="logo">
+          <img src="../assets/images/logo.png" class="responsive-img icon" alt="logo">
         </figure>
         <div class="row center-align">
           <form class="col s12">
@@ -33,16 +32,14 @@
               </div>
             </div>
           </form>
-          <!-- Modal Trigger -->
-          <a class="btn waves-effect waves-light login" type="submit" name="action">Iniciar Sesión</a>
+          <a class="waves-effect waves-light btn green accent-4" id="login">Iniciar Sesión</a>
           <p>¿Aún no tienes una cuenta?</p>
-          <!-- Modal Trigger -->
-          <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Registrate</a>
+          <a class="waves-effect waves-light btn green accent-4 modal-trigger" href="#modal1" id="register">Registrate</a>
           <hr class="line">
-          <button id="inifacebook" class="center-align waves-effect waves-light btn">
-          <i class="fa fa-facebook fa-3" aria-hidden="true"></i> Continuar con facebook</button>
-          <button id="inigoogle" class="center-align waves-effect waves-light btn">
-              <i class="fa fa-google fa-3" aria-hidden="true"></i>  Continuar con Google</button>
+          <div class="btn-red">
+            <a class="waves-effect waves-light btn btn-large red accent-4" id="iniGoogle">Google</a>
+            <a class="waves-effect waves-light btn btn-large blue darken-4" id="iniFacebook">Facebook</a>
+          </div>
         </div>
       </div>
     </div>
@@ -69,7 +66,7 @@
       </div>
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat register">Crear cuenta</a>
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat register green accent-4 white-text">Crear cuenta</a>
     </div>
   </div>
   <!-- Modal Structure 2 -->
