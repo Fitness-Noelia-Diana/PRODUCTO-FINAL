@@ -1,7 +1,6 @@
 $(document).ready(function() {
   $('.modal').modal();
   // Initialize Firebase
-  // Initialize Firebase
   var config = {
     apiKey: "AIzaSyAjNJLqG0zs1iy-VHo1NueO4DRQzEaDFdE",
     authDomain: "producto-final-8583e.firebaseapp.com",
@@ -10,6 +9,7 @@ $(document).ready(function() {
     storageBucket: "producto-final-8583e.appspot.com",
     messagingSenderId: "452395891662"
   };
+
   firebase.initializeApp(config);
 
   $('.register').on('click', function() {
@@ -67,4 +67,32 @@ $(document).ready(function() {
   function redireccionar() {
     window.location.href = '../views/home.html';
   };
+
+  function IngresoGoogle() {
+    if (!firebase.auth().currentUser) {
+      var provider = new firebase.auth.GoogleAuthProvider();
+      provider.addScope('https://www.googleapis.com/auth/plus.login');
+      firebase.auth().signInWithPopup(provider).then(function(result) {
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        console.log(user);
+      }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        if (errorcode === 'auth/account-exists-with-different-credential') {
+          alert('Es el mismo usuario');
+        }
+      });
+    } else {
+      firebase.auth().signOut();
+    }
+  };
+
+  $('#iniGoogle').on('click', IngresoGoogle);
 });

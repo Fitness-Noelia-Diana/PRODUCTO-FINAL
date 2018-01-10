@@ -1,7 +1,31 @@
 $(document).ready(function() {
   // Initialize collapse button
-  $(".button-collapse").sideNav();
+  $('.button-collapse').sideNav();
 
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAjNJLqG0zs1iy-VHo1NueO4DRQzEaDFdE",
+    authDomain: "producto-final-8583e.firebaseapp.com",
+    databaseURL: "https://producto-final-8583e.firebaseio.com",
+    projectId: "producto-final-8583e",
+    storageBucket: "producto-final-8583e.appspot.com",
+    messagingSenderId: "452395891662"
+  };
+
+  firebase.initializeApp(config);
+
+  $('#muestra').on('click', function() {
+    // console.log('funciona');
+    firebase.auth().signOut().then(function() {
+      // Sign-out successful.
+      console.log('saliendo');
+      window.location.href = '../views/login.html';
+    }).catch(function(error) {
+      // An error happened.
+      console.log(error);
+    });
+  });
+  // Funcion enviando texto
   var $tweetArea = $('.new-text');
   var $tweetBtn = $('#send');
   var $row = $('#content');
@@ -19,5 +43,4 @@ $(document).ready(function() {
     }
   });
 
-  
 });
