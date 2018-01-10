@@ -1,6 +1,7 @@
 $(document).ready(function() {
   $('.modal').modal();
   // Initialize Firebase
+  // Initialize Firebase
   var config = {
     apiKey: "AIzaSyAjNJLqG0zs1iy-VHo1NueO4DRQzEaDFdE",
     authDomain: "producto-final-8583e.firebaseapp.com",
@@ -9,36 +10,61 @@ $(document).ready(function() {
     storageBucket: "producto-final-8583e.appspot.com",
     messagingSenderId: "452395891662"
   };
-
   firebase.initializeApp(config);
 
-  function loginGoogle() {
-  	if (!firebase.auth().currentUser) {
-  	 var provider = new firebase.auth.GoogleAuthProvider();
-  	 provider.addScope('https://www.googleapis.com/auth/plus.login');
-  	 firebase.auth().signInWithPopup(provider).then(function(result) {
-			  var token = result.credential.accessToken;
-			  var user = result.user;
-			  var name = result.user.displayName;
-        window.location.href = '../index.html';
-      }).catch(function(error) {
-			  var errorCode = error.code;
-			  var errorMessage = error.message;
-			  var email = error.email;
-			  var credential = error.credential;
+  $('.register').on('click', function() {
+    // console.log('diste un click');
+    var email1 = $('#email1').val();
+    var password1 = $('#password1').val();
+    // console.log(email1);
+    // console.log(password1);
+    firebase.auth().createUserWithEmailAndPassword(email1, password1).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
+    });
+  });
 
-			  if (errorCode === 'auth/account-exists-with-different-credential') {
-			  	alert('Es el mismo usuario');
-			  }
-      });
-  	} else {
-  		firebase.auth().signOut();
-  	}
+  $('#login').on('click', function() {
+    var email = $('#email').val();
+    var password = $('#password').val();
+    // console.log(email);
+    // console.log(password);
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
+    });
+  });
+
+  function observador() {
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        console.log('existe usuario activo');
+        redireccionar();
+        // User is signed in.
+        var displayName = user.displayName;
+        var email = user.email;
+        console.log(email);
+        var emailVerified = user.emailVerified;
+        var photoURL = user.photoURL;
+        var isAnonymous = user.isAnonymous;
+        var uid = user.uid;
+        var providerData = user.providerData;
+        // ...
+      } else {
+        // User is signed out.
+        console.log('no existe usuario activo');
+      }
+    });
+  }
+
+  observador();
+  function redireccionar() {
+    window.location.href = '../views/home.html';
   };
-
-  function signOut() {
-    window.location.href = 'login.html';
-  };
-
-  $('#iniGoogle').on('click', loginGoogle);
 });
