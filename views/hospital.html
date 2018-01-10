@@ -1,95 +1,103 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Enlace Icono de Pestaña-->
-    <link rel="icon" href="../assets/images/bebe.ico">
-    <!-- Enlace a materialize compilado y minificado-->
-    <link rel="stylesheet" href="../vendors/materialize/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Enlace a hoja de estilo externa -->
-    <link rel="stylesheet" href="../css/main.css">
-    <title>Pataditas</title>
-  </head>
-  <body>
-    <header>
-      <ul id="slide-out" class="side-nav fixed">
-        <li>
-          <div class="user-view">
-            <div class="background">
-              <img src="../assets/images/fondo-avatar.jpg">
-            </div>
-            <a href="#!user"><img class="circle" src="../assets/images/mama.png"></a>
-            <a href="#!name"><span class="black-text name">Maria</span></a>
+
+<head>
+  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Enlace Icono de Pestaña-->
+  <link rel="icon" href="../assets/images/bebe.ico">
+  <!-- Enlace a materialize compilado y minificado-->
+  <link rel="stylesheet" href="../vendors/materialize/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Enlace a hoja de estilo externa -->
+  <link rel="stylesheet" href="../css/main.css">
+  <title>Pataditas</title>
+</head>
+
+<body>
+  <header>
+    <ul id="slide-out" class="side-nav fixed">
+      <li>
+        <div class="user-view">
+          <div class="background">
+            <img src="../assets/images/fondo-avatar.jpg">
           </div>
-        </li>
-        <li><a href="#!"><i class="material-icons">person</i>Mi Perfil</a></li>
-        <li>
-          <div class="divider"></div>
-        </li>
-        <li><a class="waves-effect" href="chat.html"><i class="material-icons">drafts</i>Mensajes</a></li>
-        <li><a class="waves-effect" href="#!"><i class="material-icons">people</i>Contactos</a></li>
-        <li><a class="waves-effect" href="#!"><i class="material-icons">event_available</i>Eventos</a></li>
-        <li><a class="waves-effect" href="#!"><i class="material-icons">create</i>Nombres bebes</a></li>
-        <li><a class="waves-effect" href="#!"><i class="material-icons">assignment_ind</i>Consultoría profesional</a></li>
-        <li><a class="waves-effect" href="#!"><i class="material-icons">shopping_cart</i>Tienda</a></li>
-        <li><a class="waves-effect" href="#!"><i class="material-icons">local_hospital</i>Hospitales y Clinicas</a></li>
-      </ul>
-      <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-    </header>
-      <section>
-        <div class="container">
-          <div class="row space">
-            <div class="col s12" style="border: 1px solid black;">
-              <div class="nav-wrapper">
-                <p class="brand-logo center">Hospitales y Clinicas</p>
-              </div>
-            </div>
-            <div class="col s12" id="map"></div>
-            <div class="col s12">
-              <form class="form-horizontal input-space">
-                <div class="input-group">
-                  <input type="text" id="search" class="form-control input-lg" placeholder="Hospitales y clinicas cerca a ti ">
-                  <div class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></div>
-                </div>
-              </form>
-            </div>
+          <a href="#!user"><img class="circle" src="../assets/images/mama.png"></a>
+          <a href="#!name"><span class="black-text name" id="user">Bienvenida</span></a>
+        </div>
+      </li>
+      <li><a href="#!"><i class="material-icons">person</i>Mi Perfil</a></li>
+      <li><a href="#!"><i class="material-icons">child_friendly</i>Faltan 90 dias</a></li>
+      <li>
+        <div class="divider"></div>
+      </li>
+      <li><a class="waves-effect" href="#!"><i class="material-icons">drafts</i>Notificaciones</a></li>
+      <li><a class="waves-effect" href="chat.html"><i class="material-icons">people</i>Chat en linea</a></li>
+      <li><a class="waves-effect" href="#!"><i class="material-icons">folder_shared</i>Contactos</a></li>
+      <li><a class="waves-effect" href="#!"><i class="material-icons">event_available</i>Eventos</a></li>
+      <li><a class="waves-effect" href="hospital.html"><i class="material-icons">local_hospital</i>Consultoría profesional</a></li>
+      <li id="signOut"><a class="waves-effect" href="#!"><i class="material-icons">power_settings_new</i>Salir</a></li>
+    </ul>
+    <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+  </header>
+  <section>
+    <div class="container">
+      <div class="row space">
+        <div class="col s12 border-title">
+          <div class="nav-wrapper">
+            <p class="brand-logo center">Hospitales y Clinicas</p>
           </div>
         </div>
-      </section>
-      <section>
-        <div class="places">
-          <div class="container">
-            <div class="row" id="places-group"></div>
-          </div>
+        <div class="col s12" id="map"></div>
+        <div class="col s12">
+          <form class="form-horizontal input-space">
+            <div class="input-group">
+              <i class="material-icons">search</i><input type="text" id="search" class="form-control input-lg" placeholder="Hospitales y clinicas cerca a ti ">
+            </div>
+          </form>
         </div>
-      </section>
-      <section>
-        <!-- Inicio de Modal -->
-        <!-- Modal Structure -->
-        <div id="modal1" class="modal">
-          <div class="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
-          </div>
-          <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-          </div>
-        </div>
-      </section>
+      </div>
     </div>
-    <!-- Fin vista principal -->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpcQr6CtjB7CSFK__ljGxc16dz6gSSR8g&callback=initMap">
-    </script>
-    <!-- jQuery (necesario para los complementos de JavaScript de Bootstrap) -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <!-- Enlace a Bootstrap compilado y minificado-->
-    <script type="text/javascript" src="../vendors/materialize/js/materialize.min.js"></script>
-    <script type="text/javascript" src="../js/hospital.js"></script>
-    <script type="text/javascript" src="../js/map.js"></script>
-    <script src="../js/data.js"></script>
-  </body>
+  </section>
+  <section>
+    <div class="places">
+      <div class="container">
+        <div class="row" id="places-group"></div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <!-- Inicio de Modal -->
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h5></h5>
+        <figure>
+          <img src="../assets/images/map2.png" class="responsive-img ">
+        </figure>
+        <p class="address"></p>
+        <p class="clock"></p>
+        <p class="cellphone"></p>
+
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-light btn">Salir</a>
+      </div>
+    </div>
+  </section>
+  </div>
+  <!-- Fin vista principal -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpcQr6CtjB7CSFK__ljGxc16dz6gSSR8g&callback=initMap">
+  </script>
+  <!-- jQuery (necesario para los complementos de JavaScript de Bootstrap) -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!-- Enlace a Bootstrap compilado y minificado-->
+  <script type="text/javascript" src="../vendors/materialize/js/materialize.min.js"></script>
+  <script type="text/javascript" src="../js/hospital.js"></script>
+  <script type="text/javascript" src="../js/map.js"></script>
+  <script src="../js/data.js"></script>
+</body>
+
 </html>
