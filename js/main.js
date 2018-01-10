@@ -1,5 +1,7 @@
 $(document).ready(function() {
+  // Modal materialize
   $('.modal').modal();
+
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyAjNJLqG0zs1iy-VHo1NueO4DRQzEaDFdE",
@@ -12,61 +14,8 @@ $(document).ready(function() {
 
   firebase.initializeApp(config);
 
-  $('.register').on('click', function() {
-    // console.log('diste un click');
-    var email1 = $('#email1').val();
-    var password1 = $('#password1').val();
-    // console.log(email1);
-    // console.log(password1);
-    firebase.auth().createUserWithEmailAndPassword(email1, password1).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
-    });
-  });
-
-  $('#login').on('click', function() {
-    var email = $('#email').val();
-    var password = $('#password').val();
-    // console.log(email);
-    // console.log(password);
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
-    });
-  });
-
-  function observador() {
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        console.log('existe usuario activo');
-        redireccionar();
-        // User is signed in.
-        var displayName = user.displayName;
-        var email = user.email;
-        console.log(email);
-        var emailVerified = user.emailVerified;
-        var photoURL = user.photoURL;
-        var isAnonymous = user.isAnonymous;
-        var uid = user.uid;
-        var providerData = user.providerData;
-      } else {
-        console.log('no existe usuario activo');
-      }
-    });
-  }
-
-  observador();
   function redireccionar() {
-    window.location.href = '../views/home.html';
-    var user = firebase.auth().currentUser;
-    var name = user.displayName;
-    $('#user').text(name);
+    window.location.href = 'home.html';
   };
 
   function IngresoGoogle() {
@@ -77,6 +26,7 @@ $(document).ready(function() {
         var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
+        redireccionar();
       }).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
@@ -102,7 +52,8 @@ $(document).ready(function() {
         var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
-        console.log(user);
+        // console.log(user);
+        redireccionar();
       }).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
@@ -122,4 +73,68 @@ $(document).ready(function() {
 
   $('#iniGoogle').on('click', IngresoGoogle);
   $('#iniFacebook').on('click', IngresoFacebook);
+
+  var $username = $('#user');
+  // var $userEmail = $('.directionMail');
+  var $profilePhoto = $('#usernew');
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      var name = user.displayName;
+      var email = user.email;
+      var photoUrl = user.photoURL;
+      var emailVerified = user.emailVerified;
+      var uid = user.uid;
+      console.log(user);
+      $username.text(name);
+      // $userEmail.text(email);
+      $profilePhoto.attr('src', photoUrl);
+    } else {
+      // No user is signed in.
+    }
+  });
+
+  /* Inicio js de view home */
+
+  // Initialize collapse button
+  $('.button-collapse').sideNav();
+
+  $('.favorite').on('click', function() {
+    $(this).toggleClass('like');
+  });
+
+  $('#fichero').on('change', function() {
+    var img = $(this).files[0];
+    var storageRef = firebase.storage().ref();
+    var uploadTask = storageRef.child('imagenes/' + img.name).push(img);
+  });
+
+  $('#signOut').on('click', function() {
+    // console.log('funciona');
+    firebase.auth().signOut().then(function() {
+      // Sign-out successful.
+      console.log('saliendo');
+      window.location.href = '../views/login.html';
+    }).catch(function(error) {
+      // An error happened.
+      console.log(error);
+    });
+  });
+
+  // Funcion enviando texto
+  var $tweetArea = $('.new-text');
+  var $tweetBtn = $('#send');
+  var $row = $('#content');
+
+  $tweetBtn.on('click', function() {
+    if ($tweetArea.val()) {
+      $row.prepend('<div class="new-item"><div class="row"><div class="col s10" id="new-container"><i class="small material-icons favorite">favorite</i><i class="small material-icons chat">chat</i></div></div></div>');
+      var $text = $('#new-container');
+      var $parrafo = $('<p/>', { 'class': 'paragraph' });
+      $parrafo.text($tweetArea.val());
+      $text.prepend($parrafo);
+      $tweetArea.val('');
+      $tweetArea.focus();
+    }
+  });
 });

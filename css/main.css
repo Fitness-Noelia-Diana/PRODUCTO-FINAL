@@ -45,6 +45,7 @@ body {
   background-image: url(../assets/images/fondo.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  height: 100vh;
 }
 
 .trans {
@@ -53,6 +54,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100vh;
 }
 
 .logo {
@@ -61,7 +63,7 @@ body {
 }
 
 .icon {
-  margin-left: 3rem;
+  margin-left: 2rem;
 }
 
 .line {
@@ -71,7 +73,7 @@ body {
 }
 
 .line:after {
-  content: 'O CONECTATE CON';
+  content: 'CONECTATE CON';
   font-size: 16px;
   background-color: rgb(244, 236, 232);
   position: relative;
