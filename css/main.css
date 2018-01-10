@@ -63,7 +63,7 @@ body {
 }
 
 .icon {
-  margin-left: 2rem;
+  margin-left: 2.5rem;
 }
 
 .line {
@@ -203,6 +203,7 @@ img.profile-photo {
   color : white;
   font-size: 25px;
 }
+
 #text {
   font-size: 30px;
 }
@@ -259,6 +260,11 @@ img.profile-photo {
   color: #9C571B;
 }
 
+.map2 {
+  height: 30vh;
+  width: 30vh;
+  margin-left: 30px;
+}
 /* Estilos tablet */
 @media (min-width: 768px) {
   header ul {
@@ -282,10 +288,16 @@ img.profile-photo {
   }
 
   .logo {
-    margin-left: 20rem;
+    margin-left: 15rem;
   }
 
   section, footer {
     padding-left: 300px;
+  }
+
+  .map2 {
+    height: 50vh;
+    width: 50vh;
+    margin-left: 170px;
   }
 }

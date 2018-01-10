@@ -96,6 +96,9 @@ $(document).ready(function() {
 
   /* Inicio js de view home */
 
+  $('.chat').hide();
+  $('.hospital').hide();
+
   // Initialize collapse button
   $('.button-collapse').sideNav();
 
@@ -138,16 +141,16 @@ $(document).ready(function() {
     }
   });
 
-  $('#chat').on('click', function() {
-    $('.home').hide();
-    $('.chat').show();
-    $('.hospital').hide();
-  });
-
   $('#home').on('click', function() {
     $('.chat').hide();
     $('.hospital').hide();
     $('.home').show();
+  });
+
+  $('#chat').on('click', function() {
+    $('.home').hide();
+    $('.chat').show();
+    $('.hospital').hide();
   });
 
   $('#hospital').on('click', function() {
