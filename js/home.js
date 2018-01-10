@@ -2,6 +2,9 @@ $(document).ready(function() {
   // Initialize collapse button
   $('.button-collapse').sideNav();
 
+  $('.favorite').on('click', function() {
+    $(this).toggleClass('like');
+  });
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyAjNJLqG0zs1iy-VHo1NueO4DRQzEaDFdE",
@@ -14,7 +17,15 @@ $(document).ready(function() {
 
   firebase.initializeApp(config);
 
-  $('#muestra').on('click', function() {
+  var user = firebase.auth().currentUser;
+  if (user != null) {
+    var name = user.displayName;
+    $('#user').text(name);
+  }
+  // var name = user.displayName;
+  // $('#user').text(name);
+
+  $('#signOut').on('click', function() {
     // console.log('funciona');
     firebase.auth().signOut().then(function() {
       // Sign-out successful.
@@ -25,15 +36,15 @@ $(document).ready(function() {
       console.log(error);
     });
   });
+
   // Funcion enviando texto
   var $tweetArea = $('.new-text');
   var $tweetBtn = $('#send');
   var $row = $('#content');
 
-
-  $tweetBtn.on('click', function(){
+  $tweetBtn.on('click', function() {
     if ($tweetArea.val()) {
-      $row.prepend('<div class="new-item"><div class="row"><div class="col s10" id="new-container"></div></div></div>');
+      $row.prepend('<div class="new-item"><div class="row"><div class="col s10" id="new-container"><i class="small material-icons favorite">favorite</i><i class="small material-icons chat">chat</i></div></div></div>');
       var $text = $('#new-container');
       var $parrafo = $('<p/>', { 'class': 'paragraph' });
       $parrafo.text($tweetArea.val());
@@ -42,5 +53,4 @@ $(document).ready(function() {
       $tweetArea.focus();
     }
   });
-
 });

@@ -89,23 +89,20 @@ body {
   background-color: white;
   border: 2px solid white;
   border-radius: 5px;
-  box-shadow:  0px 2px 11px 6px rgba(88,87,97,1);
-  /* box-shadow: 5px 5px 5px black; */
+  box-shadow:  0px 2px 7px 3px rgba(88,87,97,1);
 }
 
 .box-2 {
-  /* background-color: white; */
   margin-top: 20px;
-
 }
 
 .new-item {
   background-color: white;
-  box-shadow:  0px 2px 11px 6px rgba(88,87,97,1);
-  /* box-shadow: 5px 5px 5px black; */
+  box-shadow:  0px 2px 7px 3px rgba(88,87,97,1);
   margin-top: 10px;
   margin-bottom: 10px;
-    border-radius: 5px;
+  border-radius: 5px;
+  padding: 8px;
 }
 
 .chat-block {
@@ -114,16 +111,16 @@ body {
 }
 
 .chat-block .title {
-    background: #8dc63f;
-    padding: 2px 20px;
-    width: 70%;
-    height: 30px;
-    border-radius: 15px;
-    position: relative;
-    margin: 0 auto 20px;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 600;
+  background: #8dc63f;
+  padding: 2px 20px;
+  width: 70%;
+  height: 30px;
+  border-radius: 15px;
+  position: relative;
+  margin: 0 auto 20px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .online {
@@ -139,18 +136,54 @@ body {
 }
 
 img.profile-photo {
-    height: 58px;
-    width: 58px;
-    border-radius: 50%;
+  height: 58px;
+  width: 58px;
+  border-radius: 50%;
+}
+
+.right {
+  background-color: white;
+  border-radius: 2px;
+  padding: 0.2rem 2rem;
+  box-shadow:  2px 2px 11px 2px rgba(88,87,97,1);
+}
+
+.imagenes {
+  display: inline;
+}
+
+#imagen {
+  display: inline;
+}
+
+.border {
+  border-radius: 5px;
+}
+
+.favorite {
+  cursor: pointer;
+}
+
+.like {
+  color: red;
+}
+
+/* Estilos tablet */
+@media (min-width: 768px) {
+
 }
 
 /* Estilos desktop */
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .hearth {
     margin-left: 3.5rem;
   }
 
   .logo {
     margin-left: 20rem;
+  }
+
+  main, footer {
+    padding-left: 300px;
   }
 }
