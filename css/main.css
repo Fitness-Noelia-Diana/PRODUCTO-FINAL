@@ -173,7 +173,9 @@ img.profile-photo {
 #imagen {
   display: inline;
 }
-
+.responsive-img{
+  width: 100%;
+}
 .border {
   border-radius: 5px;
 }
@@ -205,12 +207,19 @@ img.profile-photo {
     padding-left: 300px;
   }
 }
-/*hospital*/
-
-.border {
-  border-bottom: 3px solid white;
+/*hospital.html*/
+.responsive-img{
+  border-radius: 5px;
 }
-
+.border-title {
+ border: 1px solid #90EE90;
+ background-color: #90EE90;
+ border-radius: 5px;
+}
+.brand-logo{
+  color : white;
+  font-size: 25px;
+}
 #text {
   font-size: 30px;
 }
@@ -274,4 +283,7 @@ img.profile-photo {
   #search {
     font-size: 20px;
   }
+/*******modal********/
+.title{
+  color:#7CD0A1;
 }

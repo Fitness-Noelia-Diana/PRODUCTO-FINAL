@@ -34,12 +34,12 @@ $(document).ready(function() {
   // Evento para obtener información de la data
   $('.info').click(function() {
     var name = $(this).data('title');
-    var message = $(this).data('message');
+    var clock = $(this).data('clock');
     var address = $(this).data('address');
-    var cost = $(this).data('cost');
-    $('h4').text(name);
-    $('.message').text(message);
+    var cellphone = $(this).data('cellphone');
+    $('h5').text(name);
     $('.address').text(address);
-    $('.cost').text(cost);
+    $('.clock').text(clock);
+    $('.cellphone').text(cellphone);
   });
 });
