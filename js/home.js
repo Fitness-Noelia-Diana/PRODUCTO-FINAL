@@ -5,6 +5,7 @@ $(document).ready(function() {
   $('.favorite').on('click', function() {
     $(this).toggleClass('like');
   });
+
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyAjNJLqG0zs1iy-VHo1NueO4DRQzEaDFdE",
@@ -17,19 +18,11 @@ $(document).ready(function() {
 
   firebase.initializeApp(config);
 
-  // var user = firebase.auth().currentUser;
-  // if (user != null) {
-  //   var name = user.displayName;
-  //   $('#user').text(name);
-  // }
-  // var name = user.displayName;
-  // $('#user').text(name);
-
-  $('#fichero').on('change', function() {
-    var img = $(this).files[0];
-    var storageRef = firebase.storage().ref();
-    var uploadTask = storageRef.child('imagenes/' + img.name).push(img);
-  });
+  // $('#fichero').on('change', function() {
+  //   var img = $(this).files[0];
+  //   var storageRef = firebase.storage().ref();
+  //   var uploadTask = storageRef.child('imagenes/' + img.name).push(img);
+  // });
 
   $('#signOut').on('click', function() {
     // console.log('funciona');

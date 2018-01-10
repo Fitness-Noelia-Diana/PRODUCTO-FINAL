@@ -64,6 +64,9 @@ $(document).ready(function() {
   observador();
   function redireccionar() {
     window.location.href = '../views/home.html';
+    var user = firebase.auth().currentUser;
+    var name = user.displayName;
+    $('#user').text(name);
   };
 
   function IngresoGoogle() {
