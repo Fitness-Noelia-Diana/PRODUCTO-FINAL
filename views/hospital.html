@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Enlace Icono de Pestaña-->
+  <link rel="icon" href="../assets/images/bebe.ico">
+  <!-- Enlace a materialize compilado y minificado-->
+  <link rel="stylesheet" href="../vendors/materialize/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Enlace a hoja de estilo externa -->
+  <link rel="stylesheet" href="../css/main.css">
+  <title>Pataditas</title>
+</head>
+
+<body>
+  <div id="homePage">
+    <header>
+    <ul id="slide-out" class="side-nav fixed">
+      <li>
+        <div class="user-view">
+          <div class="background">
+            <img src="../assets/images/fondo-avatar.jpg">
+          </div>
+          <a href="#!user"><img class="circle" src="../assets/images/mama.png"></a>
+          <a href="#!name"><span class="black-text name">Maria</span></a>
+        </div>
+      </li>
+      <li><a href="#!"><i class="material-icons">person</i>Mi Perfil</a></li>
+      <li>
+        <div class="divider"></div>
+      </li>
+      <li><a class="waves-effect" href="chat.html"><i class="material-icons">drafts</i>Mensajes</a></li>
+      <li><a class="waves-effect" href="#!"><i class="material-icons">people</i>Contactos</a></li>
+      <li><a class="waves-effect" href="#!"><i class="material-icons">event_available</i>Eventos</a></li>
+      <li><a class="waves-effect" href="#!"><i class="material-icons">create</i>Nombres bebes</a></li>
+      <li><a class="waves-effect" href="#!"><i class="material-icons">assignment_ind</i>Consultoría profesional</a></li>
+      <li><a class="waves-effect" href="#!"><i class="material-icons">shopping_cart</i>Tienda</a></li>
+      <li><a class="waves-effect" href="#!"><i class="material-icons">local_hospital</i>Hospitales y Clinicas</a></li>
+    </ul>
+    <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+  </header>
+    <section>
+      <div class="container">
+        <div class="row space">
+          <div class="col-xs-12">
+            <nav>
+              <div class="nav-wrapper">
+                <a href="" class="brand-logo center">Hospitales y Clinicas </a>
+              </div>
+            </nav>
+          </div>
+          <div class="col-xs-12" id="map"></div>
+          <div class="col-xs-12">
+            <form class="form-horizontal input-space">
+              <div class="input-group">
+                <input type="text" id="search" class="form-control input-lg" placeholder="Hospitales y clinicas cerca a ti ">
+                <div class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="places">
+        <div class="container">
+          <div class="row" id="places-group"></div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <!-- Inicio de Modal -->
+
+      <!-- Modal Trigger -->
+      <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+      <!-- Modal Structure -->
+      <div id="modal1" class="modal">
+        <div class="modal-content">
+          <h4>Modal Header</h4>
+          <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+      </div>
+
+
+      <!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" id="close">&times;</span></button>
+            <h2 class="modal-title text-center" id="myModalLabel"></h2>
+            <div class="text-center">
+              <span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            </div>
+          </div>
+          <div class="modal-body pdg-body">
+            <figure>
+              <img src="../assets/images/map2.png" alt="Responsive image" class="img-responsive img-thumbnail center-block">
+            </figure>
+            <h4 class="message text-center"></h4>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-6 col-sm-offset-2 col-sm-3 col-md-offset-1 col-md-2">
+                <p class="address text-center"></p>
+              </div>
+              <div class="col-xs-6 col-sm-3">
+                <p class="cost text-center"></p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default btn-lg center-block btn-order">Order now</button>
+          </div>
+        </div>
+      </div>
+    </div>Fin de Modal -->
+    </section>
+  </div>
+  <!-- Fin vista principal -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpcQr6CtjB7CSFK__ljGxc16dz6gSSR8g&callback=initMap">
+  </script>
+  <!-- jQuery (necesario para los complementos de JavaScript de Bootstrap) -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!-- Enlace a Bootstrap compilado y minificado-->
+  <script type="text/javascript" src="../vendors/materialize/js/materialize.min.js"></script>
+  <script type="text/javascript" src="../js/hospital.js"></script>
+  <script type="text/javascript" src="../js/map.js"></script>
+  <script src="../js/data.js"></script>
+</body>
+
+</html>
