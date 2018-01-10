@@ -55,9 +55,7 @@ $(document).ready(function() {
         var isAnonymous = user.isAnonymous;
         var uid = user.uid;
         var providerData = user.providerData;
-        // ...
       } else {
-        // User is signed out.
         console.log('no existe usuario activo');
       }
     });
@@ -93,5 +91,32 @@ $(document).ready(function() {
     }
   };
 
+  function IngresoFacebook() {
+    if (!firebase.auth().currentUser) {
+      var provider = new firebase.auth.FacebookAuthProvider();
+      provider.addScope('public_profile');
+      firebase.auth().signInWithPopup(provider).then(function(result) {
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        console.log(user);
+      }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        if (errorcode === 'auth/account-exists-with-different-credential') {
+          alert('Es el mismo usuario');
+        }
+      });
+    } else {
+      firebase.auth().signOut();
+    }
+  };
+
   $('#iniGoogle').on('click', IngresoGoogle);
+  $('#iniFacebook').on('click', IngresoFacebook);
 });

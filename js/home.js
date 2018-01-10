@@ -17,13 +17,19 @@ $(document).ready(function() {
 
   firebase.initializeApp(config);
 
-  var user = firebase.auth().currentUser;
-  if (user != null) {
-    var name = user.displayName;
-    $('#user').text(name);
-  }
+  // var user = firebase.auth().currentUser;
+  // if (user != null) {
+  //   var name = user.displayName;
+  //   $('#user').text(name);
+  // }
   // var name = user.displayName;
   // $('#user').text(name);
+
+  $('#fichero').on('change', function() {
+    var img = $(this).files[0];
+    var storageRef = firebase.storage().ref();
+    var uploadTask = storageRef.child('imagenes/' + img.name).push(img);
+  });
 
   $('#signOut').on('click', function() {
     // console.log('funciona');
