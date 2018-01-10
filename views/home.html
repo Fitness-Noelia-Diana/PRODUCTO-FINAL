@@ -25,16 +25,16 @@
        <li><a href="#!"><i class="material-icons">person</i>Mi Perfil</a></li>
        <li><a href="#!"><i class="material-icons">child_friendly</i>Faltan 90 dias</a></li>
        <li><div class="divider"></div></li>
-       <li><a class="waves-effect" href="#!"><i class="material-icons">drafts</i>Notificaciones</a></li>
-       <li><a class="waves-effect" href="chat.html"><i class="material-icons">people</i>Chat en linea</a></li>
+       <li id="home"><a class="waves-effect" href="#!"><i class="material-icons">drafts</i>Inicio</a></li>
+       <li id="chat"><a class="waves-effect" href="#!"><i class="material-icons">people</i>Chat en linea</a></li>
        <li><a class="waves-effect" href="#!"><i class="material-icons">folder_shared</i>Contactos</a></li>
        <li><a class="waves-effect" href="#!"><i class="material-icons">event_available</i>Eventos</a></li>
-       <li><a class="waves-effect" href="hospital.html"><i class="material-icons">local_hospital</i>Consultoría profesional</a></li>
+       <li id="hospital"><a class="waves-effect" href="#!"><i class="material-icons">local_hospital</i>Consultoría profesional</a></li>
        <li id="signOut"><a class="waves-effect" href="#!"><i class="material-icons">power_settings_new</i>Salir</a></li>
       </ul>
       <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
     </header>
-    <main>
+    <section class="home">
       <div class="container">
         <div class="row">
           <form class="col s12">
@@ -121,11 +121,79 @@
           </div>
         </div>
       </div>
-    </main>
-   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-   <script src="https://apis.google.com/js/platform.js" async defer></script>
-   <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
-   <script type="text/javascript" src="../vendors/materialize/js/materialize.min.js"></script>
-   <script type="text/javascript" src="../js/main.js"></script>
+    </section>
+    <section class="chat" style="display:none;">
+      <div class="chat-block">
+        <div class="title">Chat en Linea</div>
+        <ol class="online">
+          <li><img src="../assets/images/1p.jpg" alt="user" class="responsive-img profile-photo"><span class="online-dot"></span></li>
+          <li><img src="../assets/images/2p.jpg" alt="user" class="responsive-img profile-photo"><span class="online-dot"></span></li>
+          <li><img src="../assets/images/3p.jpg" alt="user" class="responsive-img profile-photo"><span class="online-dot"></span></li>
+          <li><img src="../assets/images/4p.jpg" alt="user" class="responsive-img profile-photo"><span class="online-dot"></span></li>
+          <li><img src="../assets/images/5p.jpg" alt="user" class="responsive-img profile-photo"><span class="online-dot"></span></li>
+          <li><img src="../assets/images/6p.jpg" alt="user" class="responsive-img profile-photo"><span class="online-dot"></span></li>
+          <li><img src="../assets/images/7p.jpg" alt="user" class="responsive-img profile-photo"><span class="online-dot"></span></li>
+          <li><img src="../assets/images/8p.jpg" alt="user" class="responsive-img profile-photo"><span class="online-dot"></span></li>
+          <li><img src="../assets/images/9p.jpg" alt="user" class="responsive-img profile-photo"><span class="online-dot"></span></li>
+        </ol>
+      </div>
+      <div class="box-chat">
+        <div class="">
+
+        </div>
+      </div>
+    </section>
+    <section class="hospital" style="display:none;">
+      <div class="container">
+        <div class="row space">
+          <div class="col s12 border-title">
+            <div class="nav-wrapper">
+              <p class="brand-logo center">Hospitales y Clinicas</p>
+            </div>
+          </div>
+          <div class="col s12" id="map"></div>
+          <div class="col s12">
+            <form class="form-horizontal input-space">
+              <div class="input-group">
+                <i class="material-icons">search</i><input type="text" id="search" class="form-control input-lg" placeholder="Hospitales y clinicas cerca a ti ">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="places">
+          <div class="container">
+            <div class="row" id="places-group"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Inicio de Modal -->
+      <!-- Modal Structure -->
+      <div id="modal1" class="modal">
+        <div class="modal-content">
+          <h5></h5>
+          <figure>
+            <img src="../assets/images/map2.png" class="responsive-img ">
+          </figure>
+          <p class="address"></p>
+          <p class="clock"></p>
+          <p class="cellphone"></p>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-light btn">Salir</a>
+        </div>
+      </div>
+    </section>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpcQr6CtjB7CSFK__ljGxc16dz6gSSR8g&callback=initMap">
+    </script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script type="text/javascript" src="../vendors/materialize/js/materialize.min.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
+    <script type="text/javascript" src="../js/map.js"></script>
+    <script type="text/javascript" src="../js/data.js"></script>
+    <script type="text/javascript" src="../js/hospital.js"></script>
   </body>
 </html>

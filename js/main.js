@@ -137,4 +137,22 @@ $(document).ready(function() {
       $tweetArea.focus();
     }
   });
+
+  $('#chat').on('click', function() {
+    $('.home').hide();
+    $('.chat').show();
+    $('.hospital').hide();
+  });
+
+  $('#home').on('click', function() {
+    $('.chat').hide();
+    $('.hospital').hide();
+    $('.home').show();
+  });
+
+  $('#hospital').on('click', function() {
+    $('.home').hide();
+    $('.chat').hide();
+    $('.hospital').show();
+  });
 });
